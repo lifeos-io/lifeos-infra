@@ -1,0 +1,48 @@
+{
+  "realm": "lifeos",
+  "enabled": true,
+  "registrationAllowed": false,
+  "accessTokenLifespan": 900,
+  "clients": [
+    {
+      "clientId": "lifeos-mobile",
+      "name": "Life OS mobile",
+      "enabled": true,
+      "publicClient": true,
+      "standardFlowEnabled": true,
+      "implicitFlowEnabled": false,
+      "serviceAccountsEnabled": false,
+      "directAccessGrantsEnabled": true,
+      "redirectUris": ["lifeos://*", "http://localhost/*"],
+      "webOrigins": ["+"],
+      "attributes": {
+        "pkce.code.challenge.method": "S256",
+        "post.logout.redirect.uris": "lifeos://*"
+      },
+      "protocolMappers": [
+        {
+          "name": "lifeos-api audience",
+          "protocol": "openid-connect",
+          "protocolMapper": "oidc-audience-mapper",
+          "config": {
+            "included.custom.audience": "lifeos-api",
+            "access.token.claim": "true",
+            "id.token.claim": "false",
+            "introspection.token.claim": "true"
+          }
+        }
+      ]
+    }
+  ],
+  "users": [
+    {
+      "username": "onurcan",
+      "enabled": true,
+      "email": "onurcan@lifeos.local",
+      "emailVerified": true,
+      "firstName": "Onurcan",
+      "lastName": "Local",
+      "credentials": [{ "type": "password", "value": "lifeos", "temporary": false }]
+    }
+  ]
+}
