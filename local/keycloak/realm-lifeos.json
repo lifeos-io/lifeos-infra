@@ -32,6 +32,18 @@
           }
         }
       ]
+    },
+    {
+      "clientId": "lifeos-strategy",
+      "name": "Life OS strategy service (admin API: deleting identity accounts)",
+      "enabled": true,
+      "publicClient": false,
+      "clientAuthenticatorType": "client-secret",
+      "secret": "lifeos-strategy-local-secret",
+      "standardFlowEnabled": false,
+      "implicitFlowEnabled": false,
+      "directAccessGrantsEnabled": false,
+      "serviceAccountsEnabled": true
     }
   ],
   "users": [
@@ -43,6 +55,12 @@
       "firstName": "Onurcan",
       "lastName": "Local",
       "credentials": [{ "type": "password", "value": "lifeos", "temporary": false }]
+    },
+    {
+      "username": "service-account-lifeos-strategy",
+      "enabled": true,
+      "serviceAccountClientId": "lifeos-strategy",
+      "clientRoles": { "realm-management": ["manage-users"] }
     }
   ]
 }
