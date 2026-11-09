@@ -15,6 +15,7 @@ docker compose down -v                # stop and wipe data (re-runs init.sql and
 | Kafka 3.9 (KRaft) | `localhost:9092` | topics `lifeos.{strategy,coach,trigger}.events.v1`, 6 partitions; auto-create off like production (retry/DLT topics are created by Spring Kafka) |
 | Redis 7.4 | `localhost:6379` | gateway rate limiting |
 | Keycloak 26.3 | http://localhost:8180 (admin / admin) | realm `lifeos`, client `lifeos-mobile` (public, PKCE S256), audience mapper `lifeos-api`, user `onurcan` / `lifeos`; client `lifeos-strategy` (confidential, secret `lifeos-strategy-local-secret`, service account with `realm-management/manage-users` only: Strategy deletes identity accounts with it) |
+| Mailpit | SMTP `localhost:1025`, UI http://localhost:8025 | catches the services' e-mail (Notification); nothing is sent out |
 | Kafka UI | http://localhost:8085 | only with `--profile tools` |
 
 Every service's defaults (`DB_URL`, `KAFKA_BOOTSTRAP_SERVERS`, `KEYCLOAK_ISSUER_URI`, `JWT_AUDIENCES`) already point here,
