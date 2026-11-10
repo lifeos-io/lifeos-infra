@@ -33,3 +33,15 @@ curl -H "Authorization: Bearer $TOKEN" http://localhost:8081/api/strategy/...
 ```
 
 The token has `iss=http://localhost:8180/realms/lifeos`, `aud=lifeos-api` and a UUID `sub` (the user ID every service uses).
+
+## Sign in with Google
+
+Optional, for trying the mobile app's "Google ile devam et". Keycloak brokers Google: tokens are still issued by the
+realm, so the services see an ordinary Keycloak user (created on the first Google sign-in).
+
+1. In Google Cloud Console, create an OAuth client of type **Web application** with the authorized redirect URI
+   `http://localhost:8180/realms/lifeos/broker/google/endpoint`.
+2. `cp .env.example .env` and fill in `GOOGLE_CLIENT_ID` and `GOOGLE_CLIENT_SECRET` (`.env` is not committed).
+3. With the stack running: `./keycloak/google-idp.sh` (adds or updates the provider; run it again after `down -v`).
+
+A Google account whose e-mail matches an existing user is offered to be linked to that user after its password.
